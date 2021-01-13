@@ -27,7 +27,7 @@ function signup() {
     }).then((response) => {
         console.log(response);
         alert(response.data.message)
-        location.href = "./index.html"
+        windowlocation.href = "index.html"
     }, (error) => {
         console.log(error);
         alert(error)
@@ -58,7 +58,7 @@ function login() {
         data: {
             email: loginEmail,
             password: loginPassword
-        }
+        },credential: inclued
     })
         .then(function (response) {
             console.log(response)
@@ -75,23 +75,23 @@ function login() {
 
 }
 
+function userData(){
 
+    axios({
+        method: 'get',
+        url: 'http://localhost:5000/profile',
+        
+        
+    }).then((response) => {
+        console.log(response);
+        document.getElementById('userName').innerHTML = response.data.name
+        document.getElementById('userEmail').innerHTML = response.data.email
+        document.getElementById('userPhone').innerHTML = response.data.phone
+        
 
-axios({
-    method: 'get',
-    url: 'http://localhost:5000/profile',
-    data: {
-        userName: userName,
-        userEmail: userEmail,
-        userPhone: userPhone,
-        userPassword: userPassword
-    }
-
-}).then((response) => {
-    console.log(response);
-    alert(response.data.message)
-    window.location.href = "home.html"
-}, (error) => {
-    console.log(error);
-    alert(error)
-});
+    }, (error) => {
+        console.log(error);
+        alert(error)
+    });
+    
+}
