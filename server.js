@@ -284,6 +284,17 @@ app.get('/Profile', (req, res, next) => {
 
 
 
+app.post("/logout",(req, res, next) =>{
+
+    res.cookie('jToken', "", {
+        maxAge: 86_400_000,
+        httpOnly: true
+    });
+
+    res.send("logout success");
+})
+
+
 app.listen(PORT, () => {
     console.log("surver is running on : ", PORT)
 });

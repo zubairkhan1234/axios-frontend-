@@ -24,15 +24,36 @@ function signup() {
             userPassword: userPassword
         }
 
-    }).then((response) => {
-        console.log(response);
-        
-        alert(response.data.message)
-        window.location.href="login.html"
-    }, (err) => {
-        console.log(err);
-        alert(err)
-    });
+    })
+        .then(function (response) {
+            console.log(response);
+
+            if (response.data == 200) {
+                alert(response.data.message)
+                window.location.href = "login.html"
+                // console.log(response.data)
+            } else {
+                alert(response.data.message)
+                // console.log(response.data.message)
+            }
+            // alert(response.data.message)
+            // window.location.href = "home.html"
+        })
+        .catch(function (error) {
+            // console.log(error.response.data.message);
+            alert(error.response.data.message)
+        });
+
+
+    // .then((response) => {
+    //     console.log(response);
+
+    //     alert(response.data.message)
+    //     window.location.href = "login.html"
+    // }, (err) => {
+    //     console.log(err);
+    //     alert(err)
+    // });
 
 
 
@@ -62,28 +83,31 @@ function login() {
         },
         withCredentials: true
     })
+
         .then(function (response) {
-            console.log(response)
+            // console.log(response);
             alert(response.data.message)
-            window.location.href="home.html"
-        }), (err) => {
-            console.log(err)
-        }
-    
+            window.location = "/home.html"
+        })
+        .catch(function (error) {
+            // console.log(error.response.data.message);
+            alert(error.response.data.message)
+        });
+
 
 
     return false;
-   
+
 
 }
 
-function userData(){
+function userData() {
 
     axios({
         method: 'get',
         url: 'http://localhost:5000/profile',
         credentials: 'include'
-        
+
     }).then((response) => {
 
         document.getElementById('userName').innerText = response.data.profile.name
@@ -93,5 +117,27 @@ function userData(){
         console.log(err);
         alert(err)
     });
-    
+
 }
+
+
+function logout() {
+
+    axios({
+        method: 'post',
+        url: 'http://localhost:5000/logout',
+
+    }).then((response) => {
+        console.log(response)
+        // alert(response.data.message)
+        window.location.href = "/login.html"
+
+    }, (err) => {
+        console.log(err);
+        alert(err)
+    });
+
+
+
+    return false;
+} 
