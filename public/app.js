@@ -26,13 +26,8 @@ function signup() {
 
     }).then((response) => {
         console.log(response);
-        if(response.data.statu === 200){
-
-            alert(response.data.message)
-        }else{
-            alert(response.data.message)
-
-        }
+        
+        alert(response.data.message)
         window.location.href="login.html"
     }, (err) => {
         console.log(err);
