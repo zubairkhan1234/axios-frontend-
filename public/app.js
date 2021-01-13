@@ -63,6 +63,7 @@ function login() {
         .then(function (response) {
             console.log(response)
             alert(response.data.message)
+            window.location.href="home.html"
         }), (error) => {
             console.log(error)
         }
@@ -75,3 +76,22 @@ function login() {
 }
 
 
+
+axios({
+    method: 'get',
+    url: 'http://localhost:5000/profile',
+    data: {
+        userName: userName,
+        userEmail: userEmail,
+        userPhone: userPhone,
+        userPassword: userPassword
+    }
+
+}).then((response) => {
+    console.log(response);
+    alert(response.data.message)
+    window.location.href = "home.html"
+}, (error) => {
+    console.log(error);
+    alert(error)
+});
