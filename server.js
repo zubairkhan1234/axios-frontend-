@@ -7,6 +7,7 @@ var path = require("path");
 var bcrypt = require("bcrypt-inzi");
 var jwt = require('jsonwebtoken');
 var cookieParser = require('cookie-parser');
+const { connect } = require('http2');
 
 var SERVER_SECRET = process.env.SECRET || "3456";
 
@@ -119,7 +120,7 @@ app.post('/signup', (req, res, next) => {
                     } else {
                         console.log(err)
                         res.status(403).send({
-                            message: "SignUP field"
+                            message: "user already exist"
                         })
                     };
 
@@ -264,22 +265,9 @@ app.get('/Profile', (req, res, next) => {
     console.log(req.body)
 
 
-
-    // if (!req.body.token) {
-    //     res.status(403).send(`
-    //         Please provide token in header
-    //         {
-    //             token: "kdsalfdklh32ewlsakjf3242w4"
-    //         }`)
-    //     return;
-    // }
-
-
-
-
     userModle.findById(req.body.jToken.id, "name email phone gender cratedOn",
         function (err, data) {
-
+            console.log(data)
             if (!err) {
                 res.send({
                     profile: data

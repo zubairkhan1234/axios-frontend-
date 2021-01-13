@@ -26,11 +26,17 @@ function signup() {
 
     }).then((response) => {
         console.log(response);
-        alert(response.data.message)
-        windowlocation.href = "index.html"
-    }, (error) => {
-        console.log(error);
-        alert(error)
+        if(response.data.statu === 200){
+
+            alert(response.data.message)
+        }else{
+            alert(response.data.message)
+
+        }
+        window.location.href="login.html"
+    }, (err) => {
+        console.log(err);
+        alert(err)
     });
 
 
@@ -58,14 +64,15 @@ function login() {
         data: {
             email: loginEmail,
             password: loginPassword
-        },credential: inclued
+        },
+        withCredentials: true
     })
         .then(function (response) {
             console.log(response)
             alert(response.data.message)
             window.location.href="home.html"
-        }), (error) => {
-            console.log(error)
+        }), (err) => {
+            console.log(err)
         }
     
 
@@ -80,18 +87,16 @@ function userData(){
     axios({
         method: 'get',
         url: 'http://localhost:5000/profile',
-        
+        credentials: 'include'
         
     }).then((response) => {
-        console.log(response);
-        document.getElementById('userName').innerHTML = response.data.name
-        document.getElementById('userEmail').innerHTML = response.data.email
-        document.getElementById('userPhone').innerHTML = response.data.phone
-        
 
-    }, (error) => {
-        console.log(error);
-        alert(error)
+        document.getElementById('userName').innerText = response.data.profile.name
+        document.getElementById('userEmail').innerText = response.data.profile.email
+        document.getElementById('userPhone').innerText = response.data.profile.phone
+    }, (err) => {
+        console.log(err);
+        alert(err)
     });
     
 }
