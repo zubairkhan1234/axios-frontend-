@@ -22,7 +22,8 @@ function signup() {
             userEmail: userEmail,
             userPhone: userPhone,
             userPassword: userPassword
-        }
+        },
+        withCredentials: true
 
     })
         .then(function (response) {
@@ -45,15 +46,6 @@ function signup() {
         });
 
 
-    // .then((response) => {
-    //     console.log(response);
-
-    //     alert(response.data.message)
-    //     window.location.href = "login.html"
-    // }, (err) => {
-    //     console.log(err);
-    //     alert(err)
-    // });
 
 
 
