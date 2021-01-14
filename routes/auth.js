@@ -2,7 +2,7 @@ var express = require('express');
 var bcrypt = require("bcrypt-inzi");
 var jwt = require('jsonwebtoken');
 
-
+var SERVER_SECRET = process.env.SECRET || "3456";
 var {userModle} = require("../dbrepo/modles")
 var api = express.Router()
 

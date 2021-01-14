@@ -24,7 +24,7 @@ app.use(morgan('dev'))
 app.use(bodyParser.json())
 app.use(cookieParser())
 app.use("/", express.static(path.resolve(path.join(__dirname, "public"))));
-app.use('/auth', authRoutes)
+app.use('/', authRoutes)
 
 app.use(function (req, res, next) {
     console.log('cookie', req.cookies)
