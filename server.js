@@ -6,11 +6,11 @@ var path = require("path");
 var jwt = require('jsonwebtoken');
 var cookieParser = require('cookie-parser');
 
-var {userModle} = require("./dbrepo/modles");
+var {userModel} = require("./dbrepo/modles");
 var authRoutes = require("./routes/auth")
-console.log(userModle)
+console.log(userModel)
 
-var SERVER_SECRET = process.env.SECRET || "3456";
+var SERVER_SECRET = require("./core/index")
 
 const PORT = process.env.PORT || 5000;
 

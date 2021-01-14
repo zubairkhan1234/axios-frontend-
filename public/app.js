@@ -18,10 +18,10 @@ function signup() {
         method: 'post',
         url: 'http://localhost:5000/signup',
         data: {
-            userName: userName,
-            userEmail: userEmail,
-            userPhone: userPhone,
-            userPassword: userPassword
+            name: userName,
+            email: userEmail,
+            phone: userPhone,
+            password: userPassword
         },
         withCredentials: true
 
@@ -64,6 +64,7 @@ function signup() {
 function login() {
     var loginEmail = document.getElementById('loginEmail').value
     var loginPassword = document.getElementById('loginPassword').value
+    console.log(loginPassword)
 
     // console.log(loginEmail, loginPassword)
     axios({

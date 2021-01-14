@@ -52,10 +52,19 @@ var userSchema = new mongoose.Schema({
 
 })
 
-var userModle = mongoose.model("users", userSchema)
+var userModel = mongoose.model("users", userSchema)
 
+
+var otpSchema = new mongoose.Schema({
+    email: String,
+    otpCode: String,
+    createdOn: {"type": Date  ,"Defaul": Date.now}
+})
+
+var otpModel = mongoose.model("otps", otpSchema);
+// var otpModel = mongoose.model("otps", otpSchema);
 
 module.exports = {
-    userModle: userModle,
-    // orderModel: orderModel
+    userModel: userModel,
+    otpModel: otpModel
 }
