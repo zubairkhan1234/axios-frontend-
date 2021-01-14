@@ -5,7 +5,7 @@ var { SERVER_SECRET } = require("../core/index");
 var postmark = require("postmark");
 
 
-var client = new postmark.Client("a3dadb6c-af11-47f8-9c86-6a7ca7c965c5");
+var client = new postmark.Client("");
 
 
 
